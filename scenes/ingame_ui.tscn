@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bxyox12nv17eo"]
+
+[ext_resource type="Texture2D" uid="uid://cwpq16t4m3eos" path="res://assets/HUD/Knight Portrait.png" id="1_v3yap"]
+[ext_resource type="Texture2D" uid="uid://dicof1135amq8" path="res://assets/HUD/Heart.png" id="2_h2rwu"]
+[ext_resource type="Texture2D" uid="uid://co581af7f7h16" path="res://assets/HUD/Coin.png" id="3_hifx3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npobg"]
+atlas = ExtResource("3_hifx3")
+region = Rect2(0, 0, 16, 16)
+
+[node name="HUD" type="CanvasLayer" unique_id=1008689412]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1334881398]
+offset_right = 49.0
+offset_bottom = 50.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1977939311]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1104020829]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("1_v3yap")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=165457744]
+layout_mode = 2
+
+[node name="LifeBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Stats" unique_id=1865517262]
+layout_mode = 2
+
+[node name="Heart" type="TextureRect" parent="MarginContainer/HBoxContainer/Stats/LifeBox" unique_id=420177762]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_h2rwu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Life Count" type="Label" parent="MarginContainer/HBoxContainer/Stats/LifeBox" unique_id=905409537]
+layout_mode = 2
+
+[node name="CoinBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Stats" unique_id=1029533419]
+layout_mode = 2
+
+[node name="Coin" type="TextureRect" parent="MarginContainer/HBoxContainer/Stats/CoinBox" unique_id=1852475350]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_npobg")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Coin Count" type="Label" parent="MarginContainer/HBoxContainer/Stats/CoinBox" unique_id=1107422056]
+layout_mode = 2
