@@ -139,3 +139,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "attack2":
 		is_attacking = false
 		combo_step = 0
+
+
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	var enemy = area.get_parent()
+	if enemy.has_method("take_damage"):
+		enemy.take_damage(10)

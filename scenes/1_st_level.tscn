@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bxr6fgjvq2hq7" path="res://assets/The World/Foreground/Tileset.png" id="1_r0s54"]
 [ext_resource type="PackedScene" uid="uid://bnk6wo5s0ek7r" path="res://scenes/coin.tscn" id="1_yourp"]
 [ext_resource type="Texture2D" uid="uid://cmpanivne4bjc" path="res://assets/The World/Foreground/Trees.png" id="2_7mnyq"]
+[ext_resource type="PackedScene" uid="uid://cb40h3fcryf1t" path="res://scenes/goblin.tscn" id="2_48uft"]
 [ext_resource type="PackedScene" uid="uid://dll7s1t3nj5yv" path="res://scenes/knight.tscn" id="2_bb5av"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wxbss"]
@@ -425,6 +426,12 @@ position = Vector2(596, -56)
 [node name="Coin5" parent="coins" unique_id=1016276105 instance=ExtResource("1_yourp")]
 position = Vector2(624, -56)
 
+[node name="enemies" type="Node" parent="." unique_id=1347163242]
+
+[node name="goblin" parent="enemies" unique_id=625552886 instance=ExtResource("2_48uft")]
+position = Vector2(131, 0)
+scale = Vector2(0.8, 0.8)
+
 [node name="TileMap" type="TileMap" parent="." unique_id=1153423940]
 position = Vector2(1, 0)
 format = 2
@@ -457,4 +464,5 @@ tile_set = SubResource("TileSet_7mnyq")
 [node name="Knight" parent="." unique_id=832301733 instance=ExtResource("2_bb5av")]
 
 [node name="Camera2D" type="Camera2D" parent="Knight" unique_id=201155421]
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
+rotation_smoothing_enabled = true

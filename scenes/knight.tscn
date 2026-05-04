@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ri07sdi3b5r" path="res://assets/Knight/Colour1/NoOutline/120x80_PNGSheets/_Attack.png" id="2_mvyd6"]
 [ext_resource type="Texture2D" uid="uid://osmrgfuvy1yr" path="res://assets/Knight/Colour1/NoOutline/120x80_PNGSheets/_Attack2.png" id="3_14u3r"]
 [ext_resource type="Texture2D" uid="uid://4n0116xd1oj0" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Jump.png" id="3_k2txo"]
+[ext_resource type="Texture2D" uid="uid://dnge1jr46wqv7" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_AttackNoMovement.png" id="4_3cm67"]
 [ext_resource type="Texture2D" uid="uid://b2k53f2t3nphd" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Roll.png" id="4_mvyd6"]
 [ext_resource type="Texture2D" uid="uid://dtahi65n64sp5" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Run.png" id="5_14u3r"]
 [ext_resource type="Texture2D" uid="uid://bivtaynbdcuw7" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_TurnAround.png" id="6_3cm67"]
@@ -175,6 +176,22 @@ region = Rect2(480, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y37wf"]
 atlas = ExtResource("3_14u3r")
 region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf3v0"]
+atlas = ExtResource("4_3cm67")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7r8j"]
+atlas = ExtResource("4_3cm67")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dm5t"]
+atlas = ExtResource("4_3cm67")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_612xs"]
+atlas = ExtResource("4_3cm67")
+region = Rect2(360, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw3uw"]
 atlas = ExtResource("1_swm0g")
@@ -382,6 +399,23 @@ animations = [{
 "name": &"attack2",
 "speed": 18.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf3v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7r8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dm5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_612xs")
+}],
+"loop": true,
+"name": &"attack3",
+"speed": 12.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"crouch",
@@ -566,6 +600,8 @@ position = Vector2(1, -18)
 shape = SubResource("CapsuleShape2D_swm0g")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1228112249]
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1963320844]
 position = Vector2(48, -19)
@@ -574,3 +610,4 @@ disabled = true
 debug_color = Color(0.99833244, 0, 0.15601519, 0.41960785)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
