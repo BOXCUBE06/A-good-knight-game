@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 # --- Damage Logic ---
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, attacker_x: float) -> void:
 	if is_dead:
 		return
 		
@@ -67,3 +67,11 @@ func die() -> void:
 	# Wait for the death animation to finish, then delete the goblin from the game
 	await sprite.animation_finished
 	queue_free()
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	print("Goblin bumped into: ", area.name)
+	var target = area.get_parent()
+	if target.has_method("take_damage"):
+		# Deals 5 contact damage and passes X position for knockback
+		target.take_damage(5, global_position.x)

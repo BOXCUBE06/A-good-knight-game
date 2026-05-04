@@ -415,23 +415,6 @@ sources/0 = SubResource("TileSetAtlasSource_bb5av")
 
 [node name="1st_level" type="Node2D" unique_id=1629136768]
 
-[node name="coins" type="Node" parent="." unique_id=1378512899]
-
-[node name="Coin" parent="coins" unique_id=226830582 instance=ExtResource("1_yourp")]
-position = Vector2(568, -56)
-
-[node name="Coin3" parent="coins" unique_id=1825323331 instance=ExtResource("1_yourp")]
-position = Vector2(596, -56)
-
-[node name="Coin5" parent="coins" unique_id=1016276105 instance=ExtResource("1_yourp")]
-position = Vector2(624, -56)
-
-[node name="enemies" type="Node" parent="." unique_id=1347163242]
-
-[node name="goblin" parent="enemies" unique_id=625552886 instance=ExtResource("2_48uft")]
-position = Vector2(131, 0)
-scale = Vector2(0.8, 0.8)
-
 [node name="TileMap" type="TileMap" parent="." unique_id=1153423940]
 position = Vector2(1, 0)
 format = 2
@@ -466,3 +449,23 @@ tile_set = SubResource("TileSet_7mnyq")
 [node name="Camera2D" type="Camera2D" parent="Knight" unique_id=201155421]
 zoom = Vector2(4, 4)
 rotation_smoothing_enabled = true
+
+[node name="coins" type="Node" parent="." unique_id=1378512899]
+
+[node name="Coin" parent="coins" unique_id=226830582 instance=ExtResource("1_yourp")]
+position = Vector2(568, -56)
+
+[node name="Coin3" parent="coins" unique_id=1825323331 instance=ExtResource("1_yourp")]
+position = Vector2(596, -56)
+
+[node name="Coin5" parent="coins" unique_id=1016276105 instance=ExtResource("1_yourp")]
+position = Vector2(624, -56)
+
+[node name="enemies" type="Node" parent="." unique_id=1347163242]
+
+[node name="goblin" parent="enemies" unique_id=625552886 instance=ExtResource("2_48uft")]
+position = Vector2(131, 0)
+scale = Vector2(0.8, 0.8)
+
+[node name="goblin2" parent="enemies" unique_id=81584668 instance=ExtResource("2_48uft")]
+position = Vector2(69, -62)

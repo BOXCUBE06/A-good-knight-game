@@ -320,8 +320,8 @@ animations = [{
 radius = 6.0
 height = 34.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2rmj"]
-size = Vector2(26, 34)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkl8q"]
+height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1p1y"]
 size = Vector2(28, 9)
@@ -345,10 +345,11 @@ shape = SubResource("CapsuleShape2D_pjam5")
 [node name="HurtBox" type="Area2D" parent="." unique_id=483349022]
 position = Vector2(1, -17)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2032405072]
-shape = SubResource("RectangleShape2D_v2rmj")
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_lkl8q")
 debug_color = Color(0.8487164, 0.3751638, 5.7756904e-07, 0.41960785)
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=79298944]
@@ -358,3 +359,5 @@ position = Vector2(30, -9)
 shape = SubResource("RectangleShape2D_g1p1y")
 disabled = true
 debug_color = Color(0.99999994, 0.00448285, 0.086790256, 0.41960785)
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
