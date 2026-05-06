@@ -643,6 +643,7 @@ height = 38.0
 size = Vector2(32, 28.5)
 
 [node name="Knight" type="CharacterBody2D" unique_id=832301733]
+collision_layer = 2
 script = ExtResource("1_k2txo")
 
 [node name="HealthComponentKnight" type="Node" parent="." unique_id=955036944]

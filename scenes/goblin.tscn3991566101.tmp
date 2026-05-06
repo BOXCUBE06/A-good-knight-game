@@ -326,18 +326,19 @@ height = 34.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1p1y"]
 size = Vector2(28, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkl8q"]
-size = Vector2(74, 50)
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkl8q"]
+radius = 67.0
 
 [node name="goblin" type="CharacterBody2D" unique_id=625552886]
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_lkl8q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1518008081]
 libraries/ = SubResource("AnimationLibrary_osho7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1590124530]
-position = Vector2(0, -26)
+position = Vector2(1, -26)
 sprite_frames = SubResource("SpriteFrames_jvwcf")
 animation = &"attack"
 frame = 2
@@ -371,8 +372,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1645007496]
-position = Vector2(7, -25)
-shape = SubResource("RectangleShape2D_lkl8q")
+position = Vector2(2, -17)
+shape = SubResource("CircleShape2D_lkl8q")
 debug_color = Color(0.16291687, 0.64340025, 0.108378775, 0.41960785)
 
 [node name="WallCheck" type="RayCast2D" parent="." unique_id=1286275265]
@@ -382,8 +383,6 @@ target_position = Vector2(12, 0)
 [node name="LedgeCheck" type="RayCast2D" parent="." unique_id=880629202]
 position = Vector2(17, 0)
 target_position = Vector2(0, 16)
-
-[node name="Node" type="Node" parent="." unique_id=1655924373]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]

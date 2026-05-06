@@ -1,14 +1,25 @@
 [gd_scene format=3 uid="uid://bxyox12nv17eo"]
 
+[ext_resource type="Script" uid="uid://dva4spdoetgo4" path="res://scripts/ingame_ui.gd" id="1_npobg"]
 [ext_resource type="Texture2D" uid="uid://cwpq16t4m3eos" path="res://assets/HUD/Knight Portrait.png" id="1_v3yap"]
 [ext_resource type="Texture2D" uid="uid://dicof1135amq8" path="res://assets/HUD/Heart.png" id="2_h2rwu"]
-[ext_resource type="Texture2D" uid="uid://co581af7f7h16" path="res://assets/HUD/Coin.png" id="3_hifx3"]
+[ext_resource type="Texture2D" uid="uid://m5of4nntxaf1" path="res://assets/HUD/Coin_tiles.png" id="3_hifx3"]
+[ext_resource type="Texture2D" uid="uid://0dmab6ude0ey" path="res://assets/HUD/Potion.png" id="4_npobg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm6yq"]
+atlas = ExtResource("1_v3yap")
+region = Rect2(98, 313, 815, 799)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i42rf"]
+atlas = ExtResource("4_npobg")
+region = Rect2(17, 16, 14, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npobg"]
 atlas = ExtResource("3_hifx3")
 region = Rect2(0, 0, 16, 16)
 
 [node name="HUD" type="CanvasLayer" unique_id=1008689412]
+script = ExtResource("1_npobg")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1334881398]
 offset_right = 49.0
@@ -16,22 +27,25 @@ offset_bottom = 50.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1977939311]
 layout_mode = 2
+alignment = 2
 
 [node name="Portrait" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1104020829]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(150, 128)
 layout_mode = 2
-texture = ExtResource("1_v3yap")
+texture = SubResource("AtlasTexture_cm6yq")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="Stats" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=165457744]
+custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
+theme_override_constants/separation = 27
 
 [node name="LifeBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Stats" unique_id=1865517262]
 layout_mode = 2
 
 [node name="Heart" type="TextureRect" parent="MarginContainer/HBoxContainer/Stats/LifeBox" unique_id=420177762]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_h2rwu")
 expand_mode = 1
@@ -39,12 +53,27 @@ stretch_mode = 4
 
 [node name="Life Count" type="Label" parent="MarginContainer/HBoxContainer/Stats/LifeBox" unique_id=905409537]
 layout_mode = 2
+text = "100"
+
+[node name="PotionBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Stats" unique_id=172152161]
+layout_mode = 2
+
+[node name="Potion" type="TextureRect" parent="MarginContainer/HBoxContainer/Stats/PotionBox" unique_id=1325663268]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_i42rf")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Potion Count" type="Label" parent="MarginContainer/HBoxContainer/Stats/PotionBox" unique_id=535907960]
+layout_mode = 2
+text = "3"
 
 [node name="CoinBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Stats" unique_id=1029533419]
 layout_mode = 2
 
 [node name="Coin" type="TextureRect" parent="MarginContainer/HBoxContainer/Stats/CoinBox" unique_id=1852475350]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_npobg")
 expand_mode = 1
@@ -52,3 +81,4 @@ stretch_mode = 4
 
 [node name="Coin Count" type="Label" parent="MarginContainer/HBoxContainer/Stats/CoinBox" unique_id=1107422056]
 layout_mode = 2
+text = "0"

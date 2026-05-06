@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Constants
-const SPEED = 200.0
+const SPEED = 150.0
 const ROLL_SPEED = 220.0
 const JUMP_VELOCITY = -350.0
 
@@ -11,13 +11,19 @@ const COL_X_LEFT = 10.0
 
 # State variables
 var is_dead = false
-var is_hurt = false
 var is_rolling = false
 var is_turning = false
 var is_attacking = false
-var is_knocked_back: bool = false
-var combo_step = 0       
+var combo_step = 0        
 var last_pressed_dir = 1.0
+
+# --- NEW: I-Frame State ---
+var is_invincible: bool = false
+
+# Potion Inventory
+var potions_in_inventory: int = 3 
+
+signal potion_count_changed(new_count: int)
 
 @onready var sprite = $AnimatedSprite2D
 @onready var collision = $Hitbox
@@ -32,8 +38,8 @@ func _ready() -> void:
 	health_component.died.connect(_on_health_component_knight_died)
 
 func _input(event):
-	# Stop all player inputs immediately if dead, hurt, or knocked back
-	if is_dead or is_hurt or is_knocked_back:
+	# Stop player inputs immediately if dead
+	if is_dead:
 		return
 		
 	if event.is_action_pressed("attack"):
@@ -43,6 +49,10 @@ func _input(event):
 			anim.play("attack")
 		elif combo_step == 1:
 			combo_step = 2
+			
+	# Potion Input
+	if event.is_action_pressed("heal"):
+		use_potion()
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -52,18 +62,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# --- NEW: CONTROL LOCK DURING KNOCKBACK ---
-	if is_knocked_back:
-		# Apply heavy air/ground friction so the knight slides to a halt
-		velocity.x = move_toward(velocity.x, 0, 400 * delta)
-		move_and_slide()
-		
-		# Give control back ONLY when the animation is done AND the knight hits the ground
-		if not is_hurt and is_on_floor():
-			is_knocked_back = false
-			
-		return # Stop everything below (player inputs) from executing
-
+	# Check for jump and roll inputs
 	if is_on_floor() and not is_rolling and not is_turning and not is_attacking:
 		if Input.is_action_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
@@ -88,6 +87,7 @@ func _physics_process(delta: float) -> void:
 		direction = -1.0
 		last_pressed_dir = -1.0
 
+	# Process movement states
 	if is_rolling:
 		var roll_dir = -1.0 if sprite.flip_h else 1.0
 		velocity.x = roll_dir * ROLL_SPEED
@@ -110,6 +110,24 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	update_animations(direction)
 
+# --- INVENTORY FUNCTIONS ---
+
+func use_potion() -> void:
+	if potions_in_inventory > 0:
+		if health_component.has_method("heal"):
+			var successfully_healed = health_component.heal(30)
+			
+			if successfully_healed:
+				potions_in_inventory -= 1
+				print("Healed! Potions left: ", potions_in_inventory)
+				potion_count_changed.emit(potions_in_inventory)
+			else:
+				print("Health is already full!")
+		else:
+			print("Error: Add a 'heal(amount)' function to your HealthComponentKnight script!")
+	else:
+		print("Out of potions!")
+
 # --- MOVEMENT & ANIMATION FUNCTIONS ---
 
 func start_roll():
@@ -128,28 +146,18 @@ func trigger_turn(new_direction):
 func set_facing(is_facing_left: bool):
 	sprite.flip_h = is_facing_left
 	if is_facing_left:
-		# Move the physical body
 		collision.position.x = COL_X_LEFT
-		
-		# Move the hurtbox to match the body!
 		hurtbox.position.x = COL_X_LEFT 
-		
-		# Attack Area 
 		attack_area.scale.x = -1
-		attack_area.position.x = 10.0  # Flipped left (Negative)
+		attack_area.position.x = 10.0 
 	else:
-		# Move the physical body back
 		collision.position.x = COL_X_RIGHT
-		
-		# Move the hurtbox back!
 		hurtbox.position.x = COL_X_RIGHT
-		
-		# Attack Area 
 		attack_area.scale.x = 1
 		attack_area.position.x = 0.0 
 
 func update_animations(direction):
-	if is_rolling or is_turning or is_attacking or is_hurt or is_dead or is_knocked_back:
+	if is_rolling or is_turning or is_attacking or is_dead:
 		return
 
 	if not is_on_floor():
@@ -181,42 +189,34 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 		enemy.take_damage(10, global_position.x)
 
 func take_damage(amount: int, attacker_x: float) -> void:
-	if is_dead or is_hurt: 
+	# Gatekeep incoming damage based on the i-frame state
+	if is_dead or is_invincible: 
 		return
-	# Bridge the incoming damage to the component
 	health_component.apply_damage(amount, attacker_x)
 
-func _on_health_component_took_damage(attacker_x: float) -> void:
-	var push_direction = sign(global_position.x - attacker_x)
-	if push_direction == 0:
-		push_direction = 1.0 
+func _on_health_component_took_damage(_attacker_x: float) -> void:
+	# Trigger the visual indicator and programmatic invulnerability
+	trigger_iframes()
+
+# --- I-FRAME LOGIC ---
+
+func trigger_iframes() -> void:
+	is_invincible = true
+	
+	# Loop 6 times to create a rapid flicker over 1.2 seconds
+	for i in range(6):
+		sprite.modulate.a = 0.2 # 20% opacity
+		await get_tree().create_timer(0.1).timeout
 		
-	# Apply knockback force
-	velocity.x = push_direction * 300.0  
-	velocity.y = -200.0                  
-	
-	is_attacking = false
-	combo_step = 0
-	is_rolling = false
-	is_turning = false
-	
-	# NEW: Activate our control lock flags
-	is_hurt = true
-	is_knocked_back = true
-	
-	sprite.play("hurt") 
-	await sprite.animation_finished
-	
-	# Flinch animation is finished playing
-	is_hurt = false
-	
-	# The is_knocked_back flag is handled above in _physics_process once the player lands!
+		sprite.modulate.a = 1.0 # 100% opacity
+		await get_tree().create_timer(0.1).timeout
+		
+	is_invincible = false
 
 func _on_health_component_knight_died() -> void:
 	is_dead = true
 	sprite.play("death")
 	
-	# Turn off collision safely
 	if has_node("HurtBox/CollisionShape2D"):
 		$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 	if has_node("AttackArea/CollisionShape2D"):
