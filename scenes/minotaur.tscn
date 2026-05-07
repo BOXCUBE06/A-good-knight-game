@@ -2,6 +2,43 @@
 
 [ext_resource type="Script" uid="uid://c10jwfiklp75t" path="res://scripts/minotaur.gd" id="1_umvy0"]
 [ext_resource type="Texture2D" uid="uid://b3rqxb80r25af" path="res://assets/Minotaur/goatman.png" id="1_vs060"]
+[ext_resource type="Texture2D" uid="uid://dgw18bxq3xoxy" path="res://assets/VFX/Yellow Impacts.png" id="2_4agob"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joghi"]
+atlas = ExtResource("2_4agob")
+region = Rect2(352, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31n0u"]
+atlas = ExtResource("2_4agob")
+region = Rect2(384, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyecp"]
+atlas = ExtResource("2_4agob")
+region = Rect2(416, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seo2g"]
+atlas = ExtResource("2_4agob")
+region = Rect2(448, 352, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r7ri4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joghi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31n0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyecp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seo2g")
+}],
+"loop": true,
+"name": &"stun",
+"speed": 12.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_em423"]
 atlas = ExtResource("1_vs060")
@@ -75,10 +112,6 @@ region = Rect2(64, 384, 64, 64)
 atlas = ExtResource("1_vs060")
 region = Rect2(0, 448, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aiq5y"]
-atlas = ExtResource("1_vs060")
-region = Rect2(0, 448, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp84s"]
 atlas = ExtResource("1_vs060")
 region = Rect2(64, 448, 64, 64)
@@ -86,6 +119,10 @@ region = Rect2(64, 448, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gebk"]
 atlas = ExtResource("1_vs060")
 region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiq5y"]
+atlas = ExtResource("1_vs060")
+region = Rect2(0, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxbqk"]
 atlas = ExtResource("1_vs060")
@@ -172,7 +209,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3nv7t")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 12.0
 }, {
@@ -215,7 +252,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v0r5m")
 }],
-"loop": true,
+"loop": false,
 "name": &"fall",
 "speed": 12.0
 }, {
@@ -224,13 +261,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_1ieni")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aiq5y")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_gp84s")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2gebk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiq5y")
 }],
 "loop": false,
 "name": &"hurt",
@@ -260,7 +297,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5awnf")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 12.0
 }, {
@@ -297,7 +334,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 12.0
+"speed": 10.0
 }]
 
 [sub_resource type="Animation" id="Animation_pdw1n"]
@@ -312,7 +349,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"attack"]
+"values": [&"idle"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -333,6 +370,66 @@ tracks/2/path = NodePath(".:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-84, -35)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Stun:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"stun"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Stun:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Stun:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -378,9 +475,34 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23, -30)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_q41nq"]
-resource_name = "budjoiman"
+[sub_resource type="Animation" id="Animation_umvy0"]
+resource_name = "charge"
+length = 0.6333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -391,7 +513,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"attack"]
+"values": [&"charge"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -400,21 +522,135 @@ tracks/1/path = NodePath("../../AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.3666667, 0.4, 0.43333337, 0.5666666, 0.6333333, 0.7, 0.76666665, 0.8333333, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06666666, 0.13333333, 0.2, 0.2666667, 0.33333334, 0.4, 0.46666667, 0.53333336, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.5, 2.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4agob"]
+resource_name = "stun"
+length = 0.76666665
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hurt"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Stun:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Stun:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.001, 0.06666662, 0.13333333, 0.19899997, 0.26666668, 0.33333334, 0.4, 0.46666667, 0.53333336, 0.6, 0.6666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Stun:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdw1n"]
 _data = {
 &"RESET": SubResource("Animation_pdw1n"),
 &"attack": SubResource("Animation_7djip"),
-&"budjoiman": SubResource("Animation_q41nq")
+&"charge": SubResource("Animation_umvy0"),
+&"stun": SubResource("Animation_4agob")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q41nq"]
-radius = 7.615773
+radius = 10.049875
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_em423"]
 radius = 11.0
@@ -424,19 +660,27 @@ height = 50.0
 height = 50.0
 
 [node name="Minotaur" type="CharacterBody2D" unique_id=2021664225]
+collision_layer = 4
 script = ExtResource("1_umvy0")
+
+[node name="Stun" type="AnimatedSprite2D" parent="." unique_id=1256819744]
+position = Vector2(0, -64)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_r7ri4")
+animation = &"stun"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=5087385]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_m2i1b")
-animation = &"attack"
+animation = &"idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=476449287]
 root_node = NodePath("../AttackArea/CollisionShape2D")
 libraries/ = SubResource("AnimationLibrary_pdw1n")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1067135929]
-position = Vector2(111, 5)
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=596180754]
 position = Vector2(-84, -35)
@@ -445,6 +689,8 @@ disabled = true
 debug_color = Color(0.9907456, 0, 0.28027838, 0.41960785)
 
 [node name="HurtArea" type="Area2D" parent="." unique_id=311715193]
+collision_layer = 4
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea" unique_id=1227965649]
 position = Vector2(0, -25)
@@ -454,3 +700,6 @@ debug_color = Color(0.83737415, 0.38682204, 0, 0.41960785)
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=822003837]
 position = Vector2(0, -25)
 shape = SubResource("CapsuleShape2D_umvy0")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]

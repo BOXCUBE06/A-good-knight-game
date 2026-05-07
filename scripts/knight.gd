@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Constants
 const SPEED = 150.0
-const ROLL_SPEED = 220.0
+const ROLL_SPEED = 180.0
 const JUMP_VELOCITY = -350.0
 
 # Collision Constants
@@ -33,9 +33,7 @@ signal potion_count_changed(new_count: int)
 @onready var hurtbox = $HurtBox
 
 func _ready() -> void:
-	# Connect the component signals to the knight's physical reaction functions
-	health_component.took_damage.connect(_on_health_component_took_damage)
-	health_component.died.connect(_on_health_component_knight_died)
+	pass # We deleted the old signal connections!
 
 func _input(event):
 	# Stop player inputs immediately if dead
@@ -113,18 +111,22 @@ func _physics_process(delta: float) -> void:
 # --- INVENTORY FUNCTIONS ---
 
 func use_potion() -> void:
-	if potions_in_inventory > 0:
-		if health_component.has_method("heal"):
-			var successfully_healed = health_component.heal(30)
+	# Check the GameState for potions
+	if GameState.knight_potions > 0:
+		
+		# Assuming 100 is your Max HP
+		if GameState.knight_health < 100: 
 			
-			if successfully_healed:
-				potions_in_inventory -= 1
-				print("Healed! Potions left: ", potions_in_inventory)
-				potion_count_changed.emit(potions_in_inventory)
-			else:
-				print("Health is already full!")
+			GameState.knight_health += 30
+			if GameState.knight_health > 100:
+				GameState.knight_health = 100
+				
+			# Drop the global potion count (This instantly updates the HUD!)
+			GameState.knight_potions -= 1
+			print("Healed! Potions left: ", GameState.knight_potions)
+			
 		else:
-			print("Error: Add a 'heal(amount)' function to your HealthComponentKnight script!")
+			print("Cannot use potion: Health is already full!")
 	else:
 		print("Out of potions!")
 
@@ -184,15 +186,32 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 # --- COMBAT & DAMAGE FUNCTIONS ---
 
 func _on_attack_area_area_entered(area: Area2D) -> void:
-	var enemy = area.get_parent()
-	if enemy.has_method("take_damage"):
+	# Get the root of the enemy (Minotaur or Goblin)
+	var enemy = area.owner 
+	if enemy and enemy.has_method("take_damage"):
 		enemy.take_damage(10, global_position.x)
-
-func take_damage(amount: int, attacker_x: float) -> void:
-	# Gatekeep incoming damage based on the i-frame state
+		
+func take_damage(amount: int, _attacker_x: float) -> void:
 	if is_dead or is_invincible: 
 		return
-	health_component.apply_damage(amount, attacker_x)
+	
+	# Update the Global GameState
+	GameState.knight_health -= amount
+	GameState.print_status()
+	
+	# Trigger the visual flicker
+	trigger_iframes()
+	
+	# Check for Death
+	if GameState.knight_health <= 0:
+		is_dead = true
+		sprite.play("death")
+		
+		# Turn off hitboxes so dead bodies don't deal/take damage
+		if has_node("HurtBox/CollisionShape2D"):
+			$HurtBox/CollisionShape2D.set_deferred("disabled", true)
+		if has_node("AttackArea/CollisionShape2D"):
+			$AttackArea/CollisionShape2D.set_deferred("disabled", true)
 
 func _on_health_component_took_damage(_attacker_x: float) -> void:
 	# Trigger the visual indicator and programmatic invulnerability
@@ -221,3 +240,16 @@ func _on_health_component_knight_died() -> void:
 		$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 	if has_node("AttackArea/CollisionShape2D"):
 		$AttackArea/CollisionShape2D.set_deferred("disabled", true)
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if is_dead or is_invincible:
+		return
+		
+	# 1. If the thing hitting us is a weapon (AttackArea)
+	if area.name == "AttackArea":
+		take_damage(10, area.global_position.x) # Deals 10
+		
+	# 2. If it's just the enemy's body (HurtBox or HurtArea)
+	else:
+		take_damage(5, area.global_position.x) # Deals 5

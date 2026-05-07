@@ -1,6 +1,9 @@
 [gd_scene format=4 uid="uid://dahhsti5xbcpv"]
 
+[ext_resource type="Script" uid="uid://by0037x02h532" path="res://scripts/GameState.gd" id="1_1w0s8"]
+[ext_resource type="AudioStream" uid="uid://ctibcd8i2cwqo" path="res://assets/SFX/ASGORE.mp3" id="1_5nbv5"]
 [ext_resource type="Script" uid="uid://myp88iv1tfo2" path="res://scripts/clouds_back.gd" id="1_jdp02"]
+[ext_resource type="PackedScene" uid="uid://bxyox12nv17eo" path="res://scenes/ingame_ui.tscn" id="1_pgwvi"]
 [ext_resource type="Texture2D" uid="uid://dtivsi6mo3bcd" path="res://assets/The World/Background/CloudsBack.png" id="2_onpvp"]
 [ext_resource type="Texture2D" uid="uid://emsdqly0bjqc" path="res://assets/The World/Background/CloudsFront.png" id="3_pgwvi"]
 [ext_resource type="Texture2D" uid="uid://xj0yosnvmnur" path="res://assets/The World/Background/BGBack.png" id="4_5nbv5"]
@@ -277,6 +280,14 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jdp02")
 
 [node name="1st_Boss_Area" type="Node2D" unique_id=215921540]
+script = ExtResource("1_1w0s8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1184278762]
+stream = ExtResource("1_5nbv5")
+volume_db = -7.299
+autoplay = true
+
+[node name="HUD" parent="." unique_id=1008689412 instance=ExtResource("1_pgwvi")]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=929697687]
 position = Vector2(-2507, 107)
@@ -352,6 +363,6 @@ limit_right = 896
 limit_bottom = 186
 rotation_smoothing_enabled = true
 
-[node name="Minotaur" parent="." unique_id=2021664225 instance=ExtResource("8_onpvp")]
+[node name="Minotaur" parent="." unique_id=2021664225 node_paths=PackedStringArray("player") instance=ExtResource("8_onpvp")]
 position = Vector2(865, 107)
-scale = Vector2(1.968731, 1.6056986)
+player = NodePath("../Knight")
