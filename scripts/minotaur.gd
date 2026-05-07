@@ -18,6 +18,8 @@ var next_phase_threshold: int = 200 # Boss triggers special attack at 200, 150, 
 # --- STATE MACHINE ---
 enum State { CHASE, NORMAL_ATTACK, REPOSITION, CHARGE_LEFT, CHARGE_RIGHT, STUNNED, DEAD }
 var current_state = State.CHASE
+var stun_timer: float = 0.0
+var hits_taken_in_stun: int = 0
 
 var is_invincible: bool = false
 var can_attack: bool = true
@@ -68,8 +70,13 @@ func _physics_process(delta: float) -> void:
 				trigger_stun()
 				
 		State.STUNNED:
-			# Slide to a halt and wait
+			# Slide to a halt
 			velocity.x = move_toward(velocity.x, 0, walk_speed * delta)
+			
+			# Countdown the stun timer
+			stun_timer -= delta
+			if stun_timer <= 0:
+				end_stun()
 
 	move_and_slide()
 
@@ -138,28 +145,30 @@ func start_charge(direction_state):
 
 func trigger_stun():
 	current_state = State.STUNNED
+	hits_taken_in_stun = 0 # Reset hit counter
+	stun_timer = 3.0       # Set 3-second timer
+	
 	anim_player.play("stun") 
 	
 	stun_effect.visible = true
 	if stun_effect.has_method("play"):
 		stun_effect.play() 
-	
-	# Wait for 3 seconds seamlessly
-	await get_tree().create_timer(3.0).timeout
-	
-	# --- THE FIX ---
-	# 1. Turn off the floating stars
+
+func end_stun():
+	if current_state != State.STUNNED:
+		return
+		
+	# Turn off the floating stars
 	stun_effect.visible = false
 	if stun_effect.has_method("stop"):
 		stun_effect.stop()
 		
-	# 2. Stop the AnimationPlayer so his body stops blinking
+	# Stop the AnimationPlayer so his body stops blinking
 	if anim_player.is_playing() and anim_player.current_animation == "stun":
 		anim_player.stop()
 	
-	# 3. Only go back to chasing if he didn't die while stunned
-	if current_state == State.STUNNED:
-		current_state = State.CHASE
+	# Go back to chasing
+	current_state = State.CHASE
 
 # --- DAMAGE & HEALTH ---
 
@@ -167,15 +176,35 @@ func take_damage(amount: int, _attacker_x: float) -> void:
 	if is_invincible or current_state == State.DEAD:
 		return
 		
+	# Trigger visual blink
+	blink_white()
+		
 	# Update Global Health
 	GameState.minotaur_health -= amount
-	GameState.print_status() # This prints the HP to your console
+	GameState.print_status() 
 	
 	if GameState.minotaur_health <= 0:
-		die()
+		# FIX 1: Defer the death function so physics can finish first
+		call_deferred("die") 
+		return
+		
+	# Check for stun interrupt
+	if current_state == State.STUNNED:
+		hits_taken_in_stun += 1
+		if hits_taken_in_stun >= 2:
+			# FIX 2: Defer the stun interrupt so physics can finish first
+			call_deferred("end_stun") 
+			
+	# Check for phase transitions
 	elif GameState.minotaur_health <= next_phase_threshold and current_state == State.CHASE:
 		next_phase_threshold -= 50
 		current_state = State.REPOSITION
+
+func blink_white():
+	# Turns the sprite red/white rapidly (Godot 4 multiplies colors, so using red or a high value creates a flash)
+	sprite.modulate = Color(10, 10, 10, 1) 
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color(1, 1, 1, 1)
 
 func die():
 	current_state = State.DEAD

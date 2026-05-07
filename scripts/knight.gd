@@ -192,7 +192,8 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 		enemy.take_damage(10, global_position.x)
 		
 func take_damage(amount: int, _attacker_x: float) -> void:
-	if is_dead or is_invincible: 
+	# Add is_rolling to the ignore list
+	if is_dead or is_invincible or is_rolling: 
 		return
 	
 	# Update the Global GameState
@@ -243,7 +244,8 @@ func _on_health_component_knight_died() -> void:
 
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
-	if is_dead or is_invincible:
+	# Add is_rolling to the ignore list
+	if is_dead or is_invincible or is_rolling:
 		return
 		
 	# 1. If the thing hitting us is a weapon (AttackArea)
