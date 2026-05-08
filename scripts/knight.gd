@@ -255,3 +255,9 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	# 2. If it's just the enemy's body (HurtBox or HurtArea)
 	else:
 		take_damage(5, area.global_position.x) # Deals 5
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if $AnimatedSprite2D.animation == "run":
+		# Increase the distance between the two frames (e.g., 0 and 4, or 1 and 5)
+		if $AnimatedSprite2D.frame == 0 or $AnimatedSprite2D.frame == 4:
+			$FootstepManager.play_footstep()

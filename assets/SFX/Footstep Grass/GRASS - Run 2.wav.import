@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2rn2g8umpnu5"
+path="res://.godot/imported/GRASS - Run 2.wav-da73c8f10c9e188d345bac44cf9470f8.sample"
+
+[deps]
+
+source_file="res://assets/SFX/Footstep Grass/GRASS - Run 2.wav"
+dest_files=["res://.godot/imported/GRASS - Run 2.wav-da73c8f10c9e188d345bac44cf9470f8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

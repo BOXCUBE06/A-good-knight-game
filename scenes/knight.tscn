@@ -4,14 +4,20 @@
 [ext_resource type="Script" uid="uid://comg7g80tjlac" path="res://scripts/knight.gd" id="1_k2txo"]
 [ext_resource type="Texture2D" uid="uid://013266wyu2j0" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Fall.png" id="1_swm0g"]
 [ext_resource type="Script" uid="uid://cabbl1r6ke71d" path="res://scripts/health_component_knight.gd" id="2_nw3uw"]
+[ext_resource type="Script" uid="uid://cbo3dsfpq2bw2" path="res://scripts/footstep_manager.gd" id="3_4ok4f"]
 [ext_resource type="Texture2D" uid="uid://dwqmhmn7ss470" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Attack2NoMovement.png" id="3_14u3r"]
 [ext_resource type="Texture2D" uid="uid://4n0116xd1oj0" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Jump.png" id="3_k2txo"]
 [ext_resource type="Texture2D" uid="uid://dnge1jr46wqv7" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_AttackNoMovement.png" id="4_3cm67"]
+[ext_resource type="AudioStream" uid="uid://c6ogrosttlrx5" path="res://assets/SFX/Footstep Grass/GRASS - Run 1.wav" id="4_8ko4r"]
 [ext_resource type="Texture2D" uid="uid://b2k53f2t3nphd" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Roll.png" id="4_mvyd6"]
 [ext_resource type="Texture2D" uid="uid://4tw871qx4qsm" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Death.png" id="4_w8y5l"]
 [ext_resource type="Texture2D" uid="uid://dtahi65n64sp5" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Run.png" id="5_14u3r"]
+[ext_resource type="AudioStream" uid="uid://d2rn2g8umpnu5" path="res://assets/SFX/Footstep Grass/GRASS - Run 2.wav" id="5_tpjby"]
 [ext_resource type="Texture2D" uid="uid://bivtaynbdcuw7" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_TurnAround.png" id="6_3cm67"]
 [ext_resource type="Texture2D" uid="uid://dv2dy2pkuiit0" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Hit.png" id="6_nw3uw"]
+[ext_resource type="AudioStream" uid="uid://dqnc1acx5rhm1" path="res://assets/SFX/Footstep Grass/GRASS - Run 3.wav" id="6_ouiji"]
+[ext_resource type="AudioStream" uid="uid://dfihuqq5k5ixl" path="res://assets/SFX/Footstep Grass/GRASS - Run 4.wav" id="7_o7g6j"]
+[ext_resource type="AudioStream" uid="uid://bcijkfibliyg8" path="res://assets/SFX/Footstep Grass/GRASS - Run 5.wav" id="8_rlkoa"]
 
 [sub_resource type="Animation" id="Animation_3cm67"]
 length = 0.001
@@ -649,6 +655,16 @@ script = ExtResource("1_k2txo")
 [node name="HealthComponentKnight" type="Node" parent="." unique_id=955036944]
 script = ExtResource("2_nw3uw")
 
+[node name="FootstepManager" type="Node" parent="." unique_id=507067572]
+script = ExtResource("3_4ok4f")
+grass_sounds = Array[AudioStream]([ExtResource("4_8ko4r"), ExtResource("5_tpjby"), ExtResource("6_ouiji"), ExtResource("7_o7g6j"), ExtResource("8_rlkoa")])
+
+[node name="FootstepAudio" type="AudioStreamPlayer2D" parent="FootstepManager" unique_id=1765261946]
+
+[node name="FloorChecker" type="RayCast2D" parent="FootstepManager" unique_id=340300017]
+position = Vector2(10, -14)
+target_position = Vector2(0, 14)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1604813585]
 root_node = NodePath("../AnimatedSprite2D")
 libraries/ = SubResource("AnimationLibrary_3cm67")
@@ -684,5 +700,6 @@ disabled = true
 debug_color = Color(0.99833244, 0, 0.15601519, 0.41960785)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]

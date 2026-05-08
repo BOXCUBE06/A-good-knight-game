@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://btmnd34waylly"
+path="res://.godot/imported/Steps_wood-010.ogg-61af3d267d61b8c5f8c299639b2c8422.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/SFX/Footstep Grass/Wood/Steps_wood-010.ogg"
+dest_files=["res://.godot/imported/Steps_wood-010.ogg-61af3d267d61b8c5f8c299639b2c8422.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

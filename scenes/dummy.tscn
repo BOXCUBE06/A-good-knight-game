@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b4vbtltyd6lpp"]
+
+[ext_resource type="Script" uid="uid://cricc8ikai6wd" path="res://scripts/dummy.gd" id="1_k5f3b"]
+[ext_resource type="Texture2D" uid="uid://ehbxg2iwdysd" path="res://assets/GandalfHardcore FREE Platformer Assets/Decor.png" id="1_kre8v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5f3b"]
+atlas = ExtResource("1_kre8v")
+region = Rect2(300, 197, 40, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5f3b"]
+size = Vector2(32, 56)
+
+[node name="Dummy" type="Area2D" unique_id=102553072]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_k5f3b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2063981235]
+texture = SubResource("AtlasTexture_k5f3b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714559082]
+shape = SubResource("RectangleShape2D_k5f3b")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
