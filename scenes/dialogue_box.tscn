@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cbw21cwm1ec0c"]
+
+[ext_resource type="Texture2D" uid="uid://bhkb03fvwatep" path="res://assets/HUD/UI/20250421manaSoulButtonC-Sheet.png" id="1_rc1id"]
+
+[node name="DialogueBox" type="Control" unique_id=1758801660]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueUI" type="CanvasLayer" parent="." unique_id=1792557110]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogueUI" unique_id=895610905]
+offset_left = 208.0
+offset_top = 520.0
+offset_right = 304.0
+offset_bottom = 557.0
+scale = Vector2(9, 5)
+texture = ExtResource("1_rc1id")
+region_rect = Rect2(292, 3, 88, 16)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
