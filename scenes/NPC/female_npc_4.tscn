@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://byoobraomhf5d"]
+
+[ext_resource type="Texture2D" uid="uid://4m27s5ucy3i5" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin2.png" id="1_mjnu2"]
+[ext_resource type="Texture2D" uid="uid://cebb4od0sa0la" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 58x Hair/30x Female Hair/Female Hair30.png" id="2_mjnu2"]
+[ext_resource type="Texture2D" uid="uid://bq0k6xngioiqg" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 43x Female Clothing/Queen Dress.png" id="3_510ok"]
+[ext_resource type="Texture2D" uid="uid://dccmr8kdkuc4c" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 35x Hand Items/Female Hand/Flower.png" id="3_mjnu2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62qaj"]
+atlas = ExtResource("1_mjnu2")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6wnd"]
+atlas = ExtResource("1_mjnu2")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fph2x"]
+atlas = ExtResource("1_mjnu2")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xssds"]
+atlas = ExtResource("1_mjnu2")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xx48"]
+atlas = ExtResource("1_mjnu2")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xssds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62qaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6wnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fph2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xssds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xx48")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_076e5"]
+atlas = ExtResource("2_mjnu2")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owhvv"]
+atlas = ExtResource("2_mjnu2")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7lt5"]
+atlas = ExtResource("2_mjnu2")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86erm"]
+atlas = ExtResource("2_mjnu2")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p6sl"]
+atlas = ExtResource("2_mjnu2")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_076e5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_076e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owhvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7lt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86erm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p6sl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjnu2"]
+atlas = ExtResource("3_510ok")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otlcn"]
+atlas = ExtResource("3_510ok")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82tra"]
+atlas = ExtResource("3_510ok")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pylx"]
+atlas = ExtResource("3_510ok")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgsdf"]
+atlas = ExtResource("3_510ok")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7lt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjnu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otlcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82tra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pylx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgsdf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yw2q"]
+atlas = ExtResource("3_mjnu2")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvdsw"]
+atlas = ExtResource("3_mjnu2")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltg6k"]
+atlas = ExtResource("3_mjnu2")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu0qm"]
+atlas = ExtResource("3_mjnu2")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miii3"]
+atlas = ExtResource("3_mjnu2")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_owhvv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yw2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvdsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltg6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu0qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miii3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="FemaleNpc4" type="Node2D" unique_id=724515435]
+
+[node name="skin" type="AnimatedSprite2D" parent="." unique_id=1521542077]
+sprite_frames = SubResource("SpriteFrames_xssds")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="hair" type="AnimatedSprite2D" parent="." unique_id=1982500985]
+sprite_frames = SubResource("SpriteFrames_076e5")
+autoplay = "default"
+
+[node name="clothes" type="AnimatedSprite2D" parent="." unique_id=1812705512]
+sprite_frames = SubResource("SpriteFrames_b7lt5")
+autoplay = "default"
+
+[node name="pants" type="AnimatedSprite2D" parent="." unique_id=118955810]
+sprite_frames = SubResource("SpriteFrames_owhvv")
+autoplay = "default"

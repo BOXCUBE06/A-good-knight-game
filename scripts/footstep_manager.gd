@@ -30,9 +30,14 @@ func play_footstep() -> void:
 func update_terrain() -> void:
 	if floor_checker.is_colliding():
 		var collider = floor_checker.get_collider()
+		
+		# THIS WILL PRINT THE NAME OF THE FLOOR TO YOUR OUTPUT CONSOLE
+		print("RayCast is touching: ", collider.name) 
+		
 		if collider.is_in_group("Wood"):
 			current_terrain = "wood"
 		else:
 			current_terrain = "grass" 
 	else:
+		print("RayCast is touching NOTHING")
 		current_terrain = "grass"

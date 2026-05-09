@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://d2ld4vymd8yx7"]
+
+[ext_resource type="Texture2D" uid="uid://c12lyvn0mw51e" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin1.png" id="1_u8ghk"]
+[ext_resource type="Texture2D" uid="uid://bvrh7hh18vurw" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 58x Hair/30x Female Hair/Female Hair18.png" id="2_a7pf3"]
+[ext_resource type="Texture2D" uid="uid://d3gcx0tmuhk3o" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 43x Female Clothing/Long dress red.png" id="3_advdw"]
+[ext_resource type="Texture2D" uid="uid://bnuvtmu81kpdy" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 43x Female Clothing/Red Bodice Long Sleeves.png" id="4_4ekcb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q4v8"]
+atlas = ExtResource("1_u8ghk")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dhs8"]
+atlas = ExtResource("1_u8ghk")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uxdp"]
+atlas = ExtResource("1_u8ghk")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4msx"]
+atlas = ExtResource("1_u8ghk")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeh1h"]
+atlas = ExtResource("1_u8ghk")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3b4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q4v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dhs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uxdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4msx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeh1h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn6r1"]
+atlas = ExtResource("2_a7pf3")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkkc0"]
+atlas = ExtResource("2_a7pf3")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrk7j"]
+atlas = ExtResource("2_a7pf3")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpbsv"]
+atlas = ExtResource("2_a7pf3")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdodq"]
+atlas = ExtResource("2_a7pf3")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pv1w1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn6r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkkc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrk7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpbsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdodq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unjy4"]
+atlas = ExtResource("3_advdw")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4v8a"]
+atlas = ExtResource("3_advdw")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftnt3"]
+atlas = ExtResource("3_advdw")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in4b1"]
+atlas = ExtResource("3_advdw")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54r6p"]
+atlas = ExtResource("3_advdw")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq0go"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unjy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4v8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftnt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in4b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54r6p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_farsh"]
+atlas = ExtResource("4_4ekcb")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj550"]
+atlas = ExtResource("4_4ekcb")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ycf1"]
+atlas = ExtResource("4_4ekcb")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7p4g"]
+atlas = ExtResource("4_4ekcb")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo4ys"]
+atlas = ExtResource("4_4ekcb")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckke0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_farsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj550")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ycf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7p4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo4ys")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tcpf5"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="FemaleNpc1" type="Node2D" unique_id=1151637672]
+
+[node name="skin" type="AnimatedSprite2D" parent="." unique_id=703403881]
+sprite_frames = SubResource("SpriteFrames_v3b4u")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="hair" type="AnimatedSprite2D" parent="." unique_id=1802305824]
+sprite_frames = SubResource("SpriteFrames_pv1w1")
+autoplay = "default"
+flip_h = true
+
+[node name="pants" type="AnimatedSprite2D" parent="." unique_id=1374939740]
+sprite_frames = SubResource("SpriteFrames_wq0go")
+autoplay = "default"
+flip_h = true
+
+[node name="clothes" type="AnimatedSprite2D" parent="." unique_id=1861674290]
+sprite_frames = SubResource("SpriteFrames_ckke0")
+autoplay = "default"
+flip_h = true
+
+[node name="shoes" type="AnimatedSprite2D" parent="." unique_id=1118089227]
+sprite_frames = SubResource("SpriteFrames_tcpf5")
+autoplay = "default"
+flip_h = true

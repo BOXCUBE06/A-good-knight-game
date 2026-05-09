@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dwqmhmn7ss470" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Attack2NoMovement.png" id="3_14u3r"]
 [ext_resource type="Texture2D" uid="uid://4n0116xd1oj0" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Jump.png" id="3_k2txo"]
 [ext_resource type="Texture2D" uid="uid://dnge1jr46wqv7" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_AttackNoMovement.png" id="4_3cm67"]
-[ext_resource type="AudioStream" uid="uid://c6ogrosttlrx5" path="res://assets/SFX/Footstep Grass/GRASS - Run 1.wav" id="4_8ko4r"]
 [ext_resource type="Texture2D" uid="uid://b2k53f2t3nphd" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Roll.png" id="4_mvyd6"]
 [ext_resource type="Texture2D" uid="uid://4tw871qx4qsm" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Death.png" id="4_w8y5l"]
 [ext_resource type="Texture2D" uid="uid://dtahi65n64sp5" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Run.png" id="5_14u3r"]
@@ -17,7 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://dv2dy2pkuiit0" path="res://assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Hit.png" id="6_nw3uw"]
 [ext_resource type="AudioStream" uid="uid://dqnc1acx5rhm1" path="res://assets/SFX/Footstep Grass/GRASS - Run 3.wav" id="6_ouiji"]
 [ext_resource type="AudioStream" uid="uid://dfihuqq5k5ixl" path="res://assets/SFX/Footstep Grass/GRASS - Run 4.wav" id="7_o7g6j"]
-[ext_resource type="AudioStream" uid="uid://bcijkfibliyg8" path="res://assets/SFX/Footstep Grass/GRASS - Run 5.wav" id="8_rlkoa"]
+[ext_resource type="AudioStream" uid="uid://odmaw1adgg3s" path="res://assets/SFX/Footstep Grass/Wood/Steps_wood-001.ogg" id="8_o7g6j"]
+[ext_resource type="AudioStream" uid="uid://cfhtre54333kx" path="res://assets/SFX/Footstep Grass/Wood/Steps_wood-002.ogg" id="9_rlkoa"]
+[ext_resource type="AudioStream" uid="uid://bloo06dlnmgnf" path="res://assets/SFX/Footstep Grass/Wood/Steps_wood-003.ogg" id="10_4yp3h"]
+[ext_resource type="AudioStream" uid="uid://bm102d7iljcb0" path="res://assets/SFX/Footstep Grass/Wood/Steps_wood-004.ogg" id="11_co5rl"]
 
 [sub_resource type="Animation" id="Animation_3cm67"]
 length = 0.001
@@ -655,14 +657,15 @@ script = ExtResource("1_k2txo")
 [node name="HealthComponentKnight" type="Node" parent="." unique_id=955036944]
 script = ExtResource("2_nw3uw")
 
-[node name="FootstepManager" type="Node" parent="." unique_id=507067572]
+[node name="FootstepManager" type="Node2D" parent="." unique_id=1493669385]
 script = ExtResource("3_4ok4f")
-grass_sounds = Array[AudioStream]([ExtResource("4_8ko4r"), ExtResource("5_tpjby"), ExtResource("6_ouiji"), ExtResource("7_o7g6j"), ExtResource("8_rlkoa")])
+grass_sounds = Array[AudioStream]([ExtResource("5_tpjby"), ExtResource("6_ouiji"), ExtResource("7_o7g6j")])
+wood_sounds = Array[AudioStream]([ExtResource("8_o7g6j"), ExtResource("9_rlkoa"), ExtResource("10_4yp3h"), ExtResource("11_co5rl")])
 
 [node name="FootstepAudio" type="AudioStreamPlayer2D" parent="FootstepManager" unique_id=1765261946]
 
 [node name="FloorChecker" type="RayCast2D" parent="FootstepManager" unique_id=340300017]
-position = Vector2(10, -14)
+position = Vector2(10, -13)
 target_position = Vector2(0, 14)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1604813585]

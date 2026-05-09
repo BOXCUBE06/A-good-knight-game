@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bt1wpsc5y1o1b"]
+
+[ext_resource type="Texture2D" uid="uid://k0dy8pmjjdq6" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Warrior.png" id="1_vhtku"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuifc"]
+atlas = ExtResource("1_vhtku")
+region = Rect2(0, 448, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwchc"]
+atlas = ExtResource("1_vhtku")
+region = Rect2(80, 448, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwkgo"]
+atlas = ExtResource("1_vhtku")
+region = Rect2(160, 448, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fh20"]
+atlas = ExtResource("1_vhtku")
+region = Rect2(240, 448, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8n0h"]
+atlas = ExtResource("1_vhtku")
+region = Rect2(320, 448, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vivh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuifc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwchc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwkgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fh20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8n0h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="WarriorNpc" type="Node2D" unique_id=1621620297]
+
+[node name="skin" type="AnimatedSprite2D" parent="." unique_id=668517145]
+sprite_frames = SubResource("SpriteFrames_0vivh")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.3608515
