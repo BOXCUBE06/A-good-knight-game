@@ -493,6 +493,12 @@ animations = [{
 [node name="1st_level" type="Node2D" unique_id=1629136768]
 script = ExtResource("1_wxbss")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1514259899]
+stream = ExtResource("14_80css")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
 [node name="HUD" parent="." unique_id=1008689412 instance=ExtResource("1_v8t8q")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=544356098]
@@ -841,12 +847,6 @@ shape = SubResource("RectangleShape2D_tcvun")
 
 [node name="RespawnPoint" type="Marker2D" parent="." unique_id=521989618]
 position = Vector2(-480, 80)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1514259899]
-stream = ExtResource("14_80css")
-volume_db = -15.0
-autoplay = true
-parameters/looping = true
 
 [node name="FallenKnight" type="AnimatedSprite2D" parent="." unique_id=685214339]
 position = Vector2(4254, 92)

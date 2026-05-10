@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://rogmxdpd4ah6" path="res://assets/NPC/GandalfHardcore Emoji Icons/GandalfHardcore Emoji.png" id="40_o5gos"]
 [ext_resource type="Texture2D" uid="uid://b2llfxeve5xey" path="res://assets/NPC/GandalfHardcore Emoji Icons/Quest marker.png" id="41_6pgx8"]
 [ext_resource type="PackedScene" uid="uid://bjsq2150ks24p" path="res://scenes/NPC/cat.tscn" id="42_tbof5"]
+[ext_resource type="Script" uid="uid://p4jyk8wecdef" path="res://scripts/level_trigger.gd" id="43_ieg87"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_htqv6"]
 atlas = ExtResource("7_1ngi4")
@@ -4831,6 +4832,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbof5"]
+size = Vector2(40, 57)
+
 [node name="starting_area" type="Node2D" unique_id=1939309278]
 
 [node name="Audio" type="Node" parent="." unique_id=1875042526]
@@ -5064,7 +5068,7 @@ position = Vector2(1510, 171)
 
 [node name="Knight" parent="." unique_id=832301733 instance=ExtResource("19_rhr5n")]
 z_index = 1
-position = Vector2(-664, 152)
+position = Vector2(1682, 135)
 
 [node name="Camera2D" type="Camera2D" parent="Knight" unique_id=2016425105]
 position = Vector2(0, -25)
@@ -5152,3 +5156,14 @@ autoplay = "default"
 
 [node name="Cat" parent="NPC" unique_id=1886133690 instance=ExtResource("42_tbof5")]
 position = Vector2(-992, 72)
+
+[node name="LevelTrigger" type="Area2D" parent="." unique_id=2140689153]
+position = Vector2(1840, 179)
+collision_mask = 2
+script = ExtResource("43_ieg87")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTrigger" unique_id=1504240071]
+position = Vector2(10, -6.5)
+shape = SubResource("RectangleShape2D_tbof5")
+
+[connection signal="body_entered" from="LevelTrigger" to="LevelTrigger" method="_on_body_entered"]

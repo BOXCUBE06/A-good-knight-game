@@ -1124,6 +1124,7 @@ tile_set = SubResource("TileSet_24q5d")
 [node name="FallenKnight" type="AnimatedSprite2D" parent="." unique_id=23864794]
 position = Vector2(126, -4)
 sprite_frames = SubResource("SpriteFrames_6a3md")
+frame = 6
 
 [node name="Minotaur" type="AnimatedSprite2D" parent="." unique_id=2118805077]
 position = Vector2(196, -158)
