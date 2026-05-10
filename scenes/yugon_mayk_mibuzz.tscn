@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://c63h5nhf10u2o"]
+
+[ext_resource type="Texture2D" uid="uid://dul8quxgq4dlt" path="res://assets/NPC/Trader/1.png" id="1_xh3ry"]
+[ext_resource type="Texture2D" uid="uid://e6w0eyadj2ku" path="res://assets/NPC/Trader/2.png" id="2_lhuy2"]
+[ext_resource type="Texture2D" uid="uid://cdj843aooq3p" path="res://assets/NPC/Trader/3.png" id="3_lj3m7"]
+[ext_resource type="Texture2D" uid="uid://dhaao0tn774ky" path="res://assets/NPC/Trader/4.png" id="4_bc64s"]
+[ext_resource type="Texture2D" uid="uid://c3m6der0q7e6b" path="res://assets/NPC/Trader/5.png" id="5_jthfh"]
+[ext_resource type="Texture2D" uid="uid://gwwh0ayi07lr" path="res://assets/NPC/Trader/6.png" id="6_iom2c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnmpi"]
+atlas = ExtResource("1_xh3ry")
+region = Rect2(0, 0, 94, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2218k"]
+atlas = ExtResource("2_lhuy2")
+region = Rect2(0, 0, 94, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u5t1"]
+atlas = ExtResource("3_lj3m7")
+region = Rect2(0, 0, 94, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcusd"]
+atlas = ExtResource("4_bc64s")
+region = Rect2(0, 0, 94, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1op8c"]
+atlas = ExtResource("5_jthfh")
+region = Rect2(0, 0, 94, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s35ny"]
+atlas = ExtResource("6_iom2c")
+region = Rect2(0, 0, 94, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7258c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnmpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2218k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u5t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcusd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1op8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1op8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1op8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1op8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1op8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s35ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s35ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s35ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1op8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1op8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1op8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnmpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2218k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u5t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcusd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnmpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2218k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u5t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcusd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbxim"]
+size = Vector2(84, 73.5)
+
+[node name="Yugon Mayk Mibuzz" type="Node2D" unique_id=323597159]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=954111603]
+sprite_frames = SubResource("SpriteFrames_7258c")
+frame_progress = 0.9800506
+flip_h = true
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=36118165]
+position = Vector2(-13, -8)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1008868646]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_jbxim")

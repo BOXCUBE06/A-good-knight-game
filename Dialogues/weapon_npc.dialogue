@@ -1,0 +1,9 @@
+~ start
+Hello sir!
+I love big weapons!
+Do you have a big weapon sir?
+- Yes
+	Wow Sir you have a very [shake]BIG[/shake] weapon!
+- No
+	I'm disappointed Sir.
+=> END

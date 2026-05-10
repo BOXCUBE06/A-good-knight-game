@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b62d6fqb1w0gp"
+path="res://.godot/imported/Dash-[AudioTrimmer.com].mp3-ed6dedba3b3eeb97b9e35611e76ccafe.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/Movement sfx/Dash-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Dash-[AudioTrimmer.com].mp3-ed6dedba3b3eeb97b9e35611e76ccafe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

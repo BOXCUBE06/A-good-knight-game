@@ -1,0 +1,16 @@
+~ man_help
+Kneeling Man: PLEASE
+Kneeling Man: HELP ME!!!
+=> END
+
+~ man_panic
+Kneeling Man: OH NO, ITS HERE
+=> END
+
+~ minotaur_roar
+Minotaur: MEEEEHHHH
+=> END
+
+~ knight_react
+Knight: What in the world??
+=> END

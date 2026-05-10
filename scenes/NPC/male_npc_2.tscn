@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://hnerkqecyq71"]
 
 [ext_resource type="Texture2D" uid="uid://h122lm7ira7d" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Character Asset Pack/Character skin colors/Male Skin2.png" id="1_1s8jx"]
+[ext_resource type="Script" uid="uid://cara2owfn15e7" path="res://scripts/male_npc_2.gd" id="1_bwgqr"]
 [ext_resource type="Texture2D" uid="uid://dsfqsx4fmf70x" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 58x Hair/28x Male Hair/Male Hair6.png" id="2_1s8jx"]
 [ext_resource type="Texture2D" uid="uid://s6k4amgchcuu" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Character Asset Pack/Male Clothing/Red Underwear.png" id="3_bwgqr"]
 [ext_resource type="Texture2D" uid="uid://j55odx8vnw5e" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Character Asset Pack/Male Clothing/Boots.png" id="4_2nqcl"]
@@ -256,7 +257,11 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s8jx"]
+size = Vector2(33, 45)
+
 [node name="MaleNpc2" type="Node2D" unique_id=815103275]
+script = ExtResource("1_bwgqr")
 
 [node name="skin" type="AnimatedSprite2D" parent="." unique_id=1432485123]
 sprite_frames = SubResource("SpriteFrames_g3nhw")
@@ -278,3 +283,11 @@ autoplay = "default"
 [node name="weapon" type="AnimatedSprite2D" parent="." unique_id=1288192458]
 sprite_frames = SubResource("SpriteFrames_8bqlq")
 autoplay = "default"
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=425795214]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1456563244]
+position = Vector2(-8.5, 9.5)
+shape = SubResource("RectangleShape2D_1s8jx")

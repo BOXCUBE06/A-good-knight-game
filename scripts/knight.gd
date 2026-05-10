@@ -16,6 +16,9 @@ var is_turning = false
 var is_attacking = false
 var combo_step = 0        
 var last_pressed_dir = 1.0
+# Add this near your other variables
+var is_interacting: bool = false
+var was_on_floor = true
 
 # --- NEW: I-Frame State ---
 var is_invincible: bool = false
@@ -31,9 +34,16 @@ signal potion_count_changed(new_count: int)
 @onready var attack_area = $AttackArea 
 @onready var health_component = $HealthComponentKnight
 @onready var hurtbox = $HurtBox
+@onready var jump_sound = $SFX/Jump
+@onready var landing_sound = $SFX/Landing
+@onready var roll_sound = $SFX/Dash
+@onready var roll_layer_sound = $SFX/DashLayer
+@onready var hurt_sound_1 = $SFX/Hurt
+@onready var hurt_sound_2 = $SFX/Hurt2
 
 func _ready() -> void:
-	pass # We deleted the old signal connections!
+	# Tell the player script to listen for when ANY dialogue ends
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _input(event):
 	# Stop player inputs immediately if dead
@@ -53,17 +63,27 @@ func _input(event):
 		use_potion()
 
 func _physics_process(delta: float) -> void:
+	if is_interacting:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+		
 	if is_dead:
 		return
 
-	# Always apply gravity
-	if not is_on_floor():
+	# Landing detection
+	var currently_on_floor = is_on_floor()
+	if currently_on_floor and not was_on_floor:
+		landing_sound.play()
+	was_on_floor = currently_on_floor
+
+	if not currently_on_floor:
 		velocity += get_gravity() * delta
 
-	# Check for jump and roll inputs
-	if is_on_floor() and not is_rolling and not is_turning and not is_attacking:
+	if currently_on_floor and not is_rolling and not is_turning and not is_attacking:
 		if Input.is_action_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
+			jump_sound.play()
 		elif Input.is_action_just_pressed("roll"):
 			start_roll()
 
@@ -134,6 +154,8 @@ func use_potion() -> void:
 
 func start_roll():
 	is_rolling = true
+	roll_sound.play()
+	roll_layer_sound.play()
 	sprite.play("roll", 1.5) 
 	await sprite.animation_finished 
 	is_rolling = false
@@ -192,23 +214,22 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 		enemy.take_damage(10, global_position.x)
 		
 func take_damage(amount: int, _attacker_x: float) -> void:
-	# Add is_rolling to the ignore list
 	if is_dead or is_invincible or is_rolling: 
 		return
 	
-	# Update the Global GameState
+	# Play both simultaneously
+	hurt_sound_1.play()
+	hurt_sound_2.play()
+	
 	GameState.knight_health -= amount
 	GameState.print_status()
 	
-	# Trigger the visual flicker
 	trigger_iframes()
 	
-	# Check for Death
 	if GameState.knight_health <= 0:
 		is_dead = true
 		sprite.play("death")
 		
-		# Turn off hitboxes so dead bodies don't deal/take damage
 		if has_node("HurtBox/CollisionShape2D"):
 			$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 		if has_node("AttackArea/CollisionShape2D"):
@@ -261,3 +282,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		# Increase the distance between the two frames (e.g., 0 and 4, or 1 and 5)
 		if $AnimatedSprite2D.frame == 0 or $AnimatedSprite2D.frame == 4:
 			$FootstepManager.play_footstep()
+			
+			
+func _on_dialogue_ended(_resource: DialogueResource) -> void:
+	is_interacting = false

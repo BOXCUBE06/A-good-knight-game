@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://duw2n4p34jrwy"
+path="res://.godot/imported/pilipins_npc.dialogue-0a91843dffb90f1cd8210affa6fcd021.tres"
+
+[deps]
+
+source_file="res://Dialogues/pilipins_npc.dialogue"
+dest_files=["res://.godot/imported/pilipins_npc.dialogue-0a91843dffb90f1cd8210affa6fcd021.tres"]
+
+[params]
+
+defaults=true

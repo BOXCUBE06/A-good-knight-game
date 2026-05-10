@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bt1wpsc5y1o1b"]
 
 [ext_resource type="Texture2D" uid="uid://k0dy8pmjjdq6" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Warrior.png" id="1_vhtku"]
+[ext_resource type="Script" uid="uid://qqnwkxtnuxql" path="res://scripts/warrior_npc.gd" id="1_xuifc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xuifc"]
 atlas = ExtResource("1_vhtku")
@@ -45,10 +46,22 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="WarriorNpc" type="Node2D" unique_id=1621620297]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhtku"]
+size = Vector2(37, 45)
+
+[node name="BatuKhan" type="Node2D" unique_id=1621620297]
+script = ExtResource("1_xuifc")
 
 [node name="skin" type="AnimatedSprite2D" parent="." unique_id=668517145]
 sprite_frames = SubResource("SpriteFrames_0vivh")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.3608515
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=903588566]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1266228053]
+position = Vector2(-0.5, 9.5)
+shape = SubResource("RectangleShape2D_vhtku")

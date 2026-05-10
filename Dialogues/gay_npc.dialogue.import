@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bedgh6wdru3ii"
+path="res://.godot/imported/gay_npc.dialogue-5fde616bfbceaaa809b7b24022d3029c.tres"
+
+[deps]
+
+source_file="res://Dialogues/gay_npc.dialogue"
+dest_files=["res://.godot/imported/gay_npc.dialogue-5fde616bfbceaaa809b7b24022d3029c.tres"]
+
+[params]
+
+defaults=true

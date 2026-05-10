@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://esyu6qrfer74"
+path="res://.godot/imported/sword-whoosh-2.mp3-8fbdd582c1b91672bee5f22fb5f646a8.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/Movement sfx/sword-whoosh-2.mp3"
+dest_files=["res://.godot/imported/sword-whoosh-2.mp3-8fbdd582c1b91672bee5f22fb5f646a8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

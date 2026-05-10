@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://byoobraomhf5d"]
 
+[ext_resource type="Script" uid="uid://ya4wh5d4nbqc" path="res://scripts/female_npc_4.gd" id="1_62qaj"]
 [ext_resource type="Texture2D" uid="uid://4m27s5ucy3i5" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Character Asset Pack/Character skin colors/Female Skin2.png" id="1_mjnu2"]
 [ext_resource type="Texture2D" uid="uid://cebb4od0sa0la" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 58x Hair/30x Female Hair/Female Hair30.png" id="2_mjnu2"]
 [ext_resource type="Texture2D" uid="uid://bq0k6xngioiqg" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore 43x Female Clothing/Queen Dress.png" id="3_510ok"]
@@ -177,7 +178,11 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjnu2"]
+size = Vector2(38, 44)
+
 [node name="FemaleNpc4" type="Node2D" unique_id=724515435]
+script = ExtResource("1_62qaj")
 
 [node name="skin" type="AnimatedSprite2D" parent="." unique_id=1521542077]
 sprite_frames = SubResource("SpriteFrames_xssds")
@@ -195,3 +200,11 @@ autoplay = "default"
 [node name="pants" type="AnimatedSprite2D" parent="." unique_id=118955810]
 sprite_frames = SubResource("SpriteFrames_owhvv")
 autoplay = "default"
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=856047950]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=696954451]
+position = Vector2(-7, 10)
+shape = SubResource("RectangleShape2D_mjnu2")

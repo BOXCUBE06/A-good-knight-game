@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cnpkvrkgvda5x"
+path="res://.godot/imported/angry_npc.dialogue-e32bca02254e3a1e8e045025259935ac.tres"
+
+[deps]
+
+source_file="res://Dialogues/angry_npc.dialogue"
+dest_files=["res://.godot/imported/angry_npc.dialogue-e32bca02254e3a1e8e045025259935ac.tres"]
+
+[params]
+
+defaults=true

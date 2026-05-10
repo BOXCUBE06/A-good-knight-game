@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhld4qy7kremm"
+path="res://.godot/imported/Kill Sound.mp3-abd6c9019477821bd5417426680eadf2.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/Movement sfx/Kill Sound.mp3"
+dest_files=["res://.godot/imported/Kill Sound.mp3-abd6c9019477821bd5417426680eadf2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -20,6 +20,14 @@
 [ext_resource type="AudioStream" uid="uid://cfhtre54333kx" path="res://assets/SFX/Footstep Grass/Wood/Steps_wood-002.ogg" id="9_rlkoa"]
 [ext_resource type="AudioStream" uid="uid://bloo06dlnmgnf" path="res://assets/SFX/Footstep Grass/Wood/Steps_wood-003.ogg" id="10_4yp3h"]
 [ext_resource type="AudioStream" uid="uid://bm102d7iljcb0" path="res://assets/SFX/Footstep Grass/Wood/Steps_wood-004.ogg" id="11_co5rl"]
+[ext_resource type="AudioStream" uid="uid://c0a5pt00t3wjl" path="res://assets/SFX/Movement sfx/sword-whoosh-1.mp3" id="21_o7g6j"]
+[ext_resource type="AudioStream" uid="uid://esyu6qrfer74" path="res://assets/SFX/Movement sfx/sword-whoosh-2.mp3" id="22_rlkoa"]
+[ext_resource type="AudioStream" uid="uid://3my3ofuwiyxq" path="res://assets/SFX/Movement sfx/hit.wav" id="23_4yp3h"]
+[ext_resource type="AudioStream" uid="uid://b62d6fqb1w0gp" path="res://assets/SFX/Movement sfx/Dash-[AudioTrimmer.com].mp3" id="23_o8aj7"]
+[ext_resource type="AudioStream" uid="uid://busj02ih253n2" path="res://assets/SFX/Movement sfx/gruntjump.mp3" id="23_ujkqr"]
+[ext_resource type="AudioStream" uid="uid://badqye8wxtd6b" path="res://assets/SFX/Movement sfx/Dash Layer.mp3" id="24_s8y5s"]
+[ext_resource type="AudioStream" uid="uid://ytc3cftuuaf5" path="res://assets/SFX/Movement sfx/landing-[AudioTrimmer.com].mp3" id="26_o8aj7"]
+[ext_resource type="AudioStream" uid="uid://bt2grse8y06xv" path="res://assets/SFX/Movement sfx/hurt.mp3" id="28_rhhm5"]
 
 [sub_resource type="Animation" id="Animation_3cm67"]
 length = 0.001
@@ -99,6 +107,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SFX/SwordSwoosh1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("21_o7g6j")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_w8y5l"]
 resource_name = "attack2"
@@ -139,6 +162,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SFX/SwordSwoosh2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("22_rlkoa")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3cm67"]
 _data = {
@@ -701,6 +739,38 @@ position = Vector2(35, -15.25)
 shape = SubResource("RectangleShape2D_xf3v0")
 disabled = true
 debug_color = Color(0.99833244, 0, 0.15601519, 0.41960785)
+
+[node name="SFX" type="Node" parent="." unique_id=1156500406]
+
+[node name="Dash" type="AudioStreamPlayer" parent="SFX" unique_id=288601918]
+stream = ExtResource("23_o8aj7")
+volume_db = 0.9
+
+[node name="DashLayer" type="AudioStreamPlayer" parent="SFX" unique_id=1917399129]
+stream = ExtResource("24_s8y5s")
+volume_db = -17.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX" unique_id=272635909]
+stream = ExtResource("23_ujkqr")
+volume_db = -10.0
+
+[node name="Landing" type="AudioStreamPlayer" parent="SFX" unique_id=1372573895]
+stream = ExtResource("26_o8aj7")
+volume_db = 1.0
+
+[node name="SwordSwoosh1" type="AudioStreamPlayer" parent="SFX" unique_id=1899175552]
+volume_db = -10.0
+
+[node name="SwordSwoosh2" type="AudioStreamPlayer" parent="SFX" unique_id=1280813672]
+volume_db = -6.0
+
+[node name="Hurt" type="AudioStreamPlayer" parent="SFX" unique_id=556894000]
+stream = ExtResource("23_4yp3h")
+volume_db = -7.0
+
+[node name="Hurt2" type="AudioStreamPlayer" parent="SFX" unique_id=1200292415]
+stream = ExtResource("28_rhhm5")
+volume_db = -2.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

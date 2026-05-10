@@ -9,6 +9,9 @@ func _on_body_entered(body: Node2D) -> void:
 		
 	is_collected = true
 	
+	# Play the audio immediately upon collection
+	$Pickup.play()
+	
 	# 1. Turn off collision immediately so it can't be grabbed again
 	$CollisionShape2D.set_deferred("disabled", true)
 	

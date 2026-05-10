@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://cbw21cwm1ec0c"]
+
+[ext_resource type="Script" uid="uid://ci8ilp3mt8a4i" path="res://scripts/dialogue_box.gd" id="1_rc1id"]
+[ext_resource type="Texture2D" uid="uid://d1p7gybvmm6qt" path="res://assets/HUD/UI/20250420manaSoul9SlicesF-Sheet.png" id="2_fu8b5"]
+[ext_resource type="Texture2D" uid="uid://dln1moc6br7dh" path="res://assets/HUD/UI/20250420manaSoul9SlicesA-Sheet.png" id="2_tm68y"]
+[ext_resource type="Texture2D" uid="uid://bxjfmj6rdb68a" path="res://assets/HUD/zenith.png" id="4_hvmm2"]
+[ext_resource type="Texture2D" uid="uid://bxk01g80q2vec" path="res://assets/HUD/4.png" id="5_p0wdv"]
+[ext_resource type="Texture2D" uid="uid://blnbbv7eb2mmx" path="res://assets/HUD/Immortal.png" id="6_c26ww"]
+[ext_resource type="Texture2D" uid="uid://0dmab6ude0ey" path="res://assets/HUD/Potion.png" id="6_pehjr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pehjr"]
+texture = ExtResource("2_tm68y")
+texture_margin_left = 20.0
+texture_margin_top = 50.0
+texture_margin_right = 20.0
+texture_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tm68y"]
+texture = ExtResource("2_fu8b5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fu8b5"]
+texture = ExtResource("2_fu8b5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hvmm2"]
+texture = ExtResource("2_fu8b5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p0wdv"]
+texture = ExtResource("2_fu8b5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pehjr"]
+atlas = ExtResource("6_pehjr")
+region = Rect2(17, 16, 14, 16)
+
+[node name="ShopUI" type="CanvasLayer" unique_id=1074894717]
+script = ExtResource("1_rc1id")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=570196067]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(31.998827, 17.99784)
+color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1525211305]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 266.0
+offset_bottom = 148.0
+scale = Vector2(5, 5)
+
+[node name="MainBackgroundPanel" type="PanelContainer" parent="CenterContainer" unique_id=908335364]
+custom_minimum_size = Vector2(250, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pehjr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainBackgroundPanel" unique_id=175940795]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer" unique_id=715182432]
+layout_mode = 2
+alignment = 1
+
+[node name="ItemPanel1" type="PanelContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer/HBoxContainer" unique_id=1300909825]
+clip_contents = true
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_tm68y")
+
+[node name="Item1" type="VBoxContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer/HBoxContainer/ItemPanel1" unique_id=1202474633]
+layout_mode = 2
+
+[node name="ItemPanel2" type="PanelContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer/HBoxContainer" unique_id=1478039242]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_fu8b5")
+
+[node name="Item2" type="VBoxContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer/HBoxContainer/ItemPanel2" unique_id=1631760573]
+layout_mode = 2
+
+[node name="ItemPanel3" type="PanelContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer/HBoxContainer" unique_id=29336517]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_hvmm2")
+
+[node name="Item3" type="VBoxContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer/HBoxContainer/ItemPanel3" unique_id=1232294021]
+layout_mode = 2
+
+[node name="ItemPanel4" type="PanelContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer/HBoxContainer" unique_id=1908831057]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_p0wdv")
+
+[node name="Item4" type="VBoxContainer" parent="CenterContainer/MainBackgroundPanel/VBoxContainer/HBoxContainer/ItemPanel4" unique_id=1482772177]
+layout_mode = 2
+
+[node name="Button1" type="VBoxContainer" parent="." unique_id=1810591565]
+offset_left = 202.0
+offset_top = 435.0
+offset_right = 275.0
+offset_bottom = 475.0
+
+[node name="PriceLabel1" type="Label" parent="Button1" unique_id=938175262]
+layout_mode = 2
+text = "9,999,999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton1" type="Button" parent="Button1" unique_id=1618211522]
+layout_mode = 2
+disabled = true
+text = "BUY"
+
+[node name="Button2" type="VBoxContainer" parent="." unique_id=24367357]
+offset_left = 472.0
+offset_top = 440.0
+offset_right = 545.0
+offset_bottom = 498.0
+
+[node name="PriceLabel2" type="Label" parent="Button2" unique_id=194580098]
+layout_mode = 2
+text = "5,000,000"
+horizontal_alignment = 1
+
+[node name="BuyButton2" type="Button" parent="Button2" unique_id=283590936]
+layout_mode = 2
+disabled = true
+text = "BUY"
+
+[node name="Button3" type="VBoxContainer" parent="." unique_id=716344358]
+offset_left = 744.0
+offset_top = 440.0
+offset_right = 817.0
+offset_bottom = 498.0
+
+[node name="PriceLabel3" type="Label" parent="Button3" unique_id=1379203884]
+layout_mode = 2
+text = "3,000,000"
+horizontal_alignment = 1
+
+[node name="BuyButton3" type="Button" parent="Button3" unique_id=1857212226]
+layout_mode = 2
+disabled = true
+text = "BUY"
+
+[node name="Button4" type="VBoxContainer" parent="." unique_id=1162300307]
+offset_left = 1000.0
+offset_top = 440.0
+offset_right = 1073.0
+offset_bottom = 498.0
+
+[node name="PriceLabel4" type="Label" parent="Button4" unique_id=1253781448]
+layout_mode = 2
+text = "      10       "
+horizontal_alignment = 1
+
+[node name="BuyButton4" type="Button" parent="Button4" unique_id=1171918344]
+layout_mode = 2
+text = "BUY"
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=2126114491]
+custom_minimum_size = Vector2(250, 250)
+offset_left = 386.0
+offset_top = 224.0
+offset_right = 636.0
+offset_bottom = 474.0
+texture = ExtResource("5_p0wdv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1025732402]
+custom_minimum_size = Vector2(120, 120)
+offset_left = 171.0
+offset_top = 290.0
+offset_right = 291.0
+offset_bottom = 410.0
+texture = ExtResource("4_hvmm2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1975124057]
+custom_minimum_size = Vector2(160, 160)
+offset_left = 691.0
+offset_top = 270.0
+offset_right = 851.0
+offset_bottom = 430.0
+texture = ExtResource("6_c26ww")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1928695615]
+offset_left = 981.0
+offset_top = 286.0
+offset_right = 1101.0
+offset_bottom = 406.0
+texture = SubResource("AtlasTexture_pehjr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseButton" type="Button" parent="." unique_id=282261681]
+offset_left = 1135.0
+offset_top = 607.0
+offset_right = 1193.0
+offset_bottom = 638.0

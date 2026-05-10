@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bjsq2150ks24p"]
+
+[ext_resource type="Script" uid="uid://r8vhyptwkbml" path="res://scripts/cat.gd" id="1_ule3u"]
+[ext_resource type="Texture2D" uid="uid://ekmvqbqlgs0q" path="res://assets/NPC/GandalfHardcore NPC/GandalfHardcore Pet companion/GandalfHardcore fox.png" id="2_ule3u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_833as"]
+atlas = ExtResource("2_ule3u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs06q"]
+atlas = ExtResource("2_ule3u")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_com2f"]
+atlas = ExtResource("2_ule3u")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di7dl"]
+atlas = ExtResource("2_ule3u")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhggc"]
+atlas = ExtResource("2_ule3u")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ule3u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_833as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs06q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_com2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di7dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhggc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_833as"]
+size = Vector2(46, 20)
+
+[node name="Cat" type="Node2D" unique_id=1886133690]
+script = ExtResource("1_ule3u")
+
+[node name="pants" type="AnimatedSprite2D" parent="." unique_id=1310929992]
+sprite_frames = SubResource("SpriteFrames_ule3u")
+autoplay = "default"
+frame_progress = 0.25773343
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1546627177]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1292552761]
+position = Vector2(9, 7)
+shape = SubResource("RectangleShape2D_833as")

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cu16xy3pi0xv0"
+path="res://.godot/imported/weapon_npc.dialogue-c14ca74ecde7718fb6063fde93387f25.tres"
+
+[deps]
+
+source_file="res://Dialogues/weapon_npc.dialogue"
+dest_files=["res://.godot/imported/weapon_npc.dialogue-c14ca74ecde7718fb6063fde93387f25.tres"]
+
+[params]
+
+defaults=true
