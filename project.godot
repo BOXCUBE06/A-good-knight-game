@@ -33,6 +33,10 @@ window/size/viewport_height=720
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://tlqp4apre88l"
+
 [input]
 
 left={
@@ -79,7 +83,7 @@ interact={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/test.dialogue", "res://Dialogues/weapon_npc.dialogue", "res://Dialogues/pilipins_npc.dialogue", "res://Dialogues/gay_npc.dialogue", "res://Dialogues/sad_npc.dialogue", "res://Dialogues/farmer_npc.dialogue", "res://Dialogues/angry_npc.dialogue", "res://Dialogues/quest.dialogue", "res://Dialogues/cat.dialogue", "res://Dialogues/shop.dialogue", "res://Dialogues/cutscene.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/test.dialogue", "res://Dialogues/weapon_npc.dialogue", "res://Dialogues/pilipins_npc.dialogue", "res://Dialogues/gay_npc.dialogue", "res://Dialogues/sad_npc.dialogue", "res://Dialogues/farmer_npc.dialogue", "res://Dialogues/angry_npc.dialogue", "res://Dialogues/quest.dialogue", "res://Dialogues/cat.dialogue", "res://Dialogues/shop.dialogue", "res://Dialogues/cutscene.dialogue", "res://Dialogues/intro.dialogue", "res://Dialogues/boss_intro.dialogue")
 
 [layer_names]
 

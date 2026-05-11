@@ -5,6 +5,8 @@ extends Node2D
 
 const DIALOGUE = preload("res://Dialogues/cutscene.dialogue")
 const CUSTOM_BALLOON = preload("res://Dialogues/balloon.tscn")
+# Add the path to your boss area here
+const BOSS_AREA = "res://scenes/1_st_boss_area.tscn" 
 
 func _ready() -> void:
 	# Start the sequence
@@ -43,7 +45,8 @@ func play_cutscene() -> void:
 	anim_player.play("knight_chase")
 	await anim_player.animation_finished
 	
-	
+	# 10. Transition to the boss area
+	SceneTransition.change_scene(BOSS_AREA)
 
 
 # Helper function to spawn dialogue and pause the script until it closes

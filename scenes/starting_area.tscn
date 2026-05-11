@@ -5068,7 +5068,7 @@ position = Vector2(1510, 171)
 
 [node name="Knight" parent="." unique_id=832301733 instance=ExtResource("19_rhr5n")]
 z_index = 1
-position = Vector2(1682, 135)
+position = Vector2(-664, 152)
 
 [node name="Camera2D" type="Camera2D" parent="Knight" unique_id=2016425105]
 position = Vector2(0, -25)

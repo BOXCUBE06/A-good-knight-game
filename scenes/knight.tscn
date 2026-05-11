@@ -766,11 +766,11 @@ volume_db = -6.0
 
 [node name="Hurt" type="AudioStreamPlayer" parent="SFX" unique_id=556894000]
 stream = ExtResource("23_4yp3h")
-volume_db = -10.0
+volume_db = -8.0
 
 [node name="Hurt2" type="AudioStreamPlayer" parent="SFX" unique_id=1200292415]
 stream = ExtResource("28_rhhm5")
-volume_db = -5.0
+volume_db = -3.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dwjtk05xhybgx"]
 
+[ext_resource type="Script" uid="uid://bu1m2vtfeo0q3" path="res://scripts/main_menu.gd" id="1_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://qxmmnsru7gm4" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 5.png" id="1_8ln24"]
 [ext_resource type="Script" uid="uid://3gpa3b8bpsf4" path="res://scripts/parallax_background.gd" id="1_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://wldxlrwm7hcs" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 4.png" id="2_rtw2f"]
@@ -7,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dav0prw1mgtlu" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 2.png" id="4_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://dptjx23kwst6k" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 1.png" id="5_jk1qb"]
 [ext_resource type="Texture2D" uid="uid://di1l8yn6wnsff" path="res://assets/HUD/Title.png" id="7_oa1go"]
+[ext_resource type="Texture2D" uid="uid://svyp1nf4an12" path="res://assets/HUD/UI/20250421manaSoulButtonB-Sheet.png" id="8_tbmy8"]
+[ext_resource type="Script" uid="uid://cndypgdwma20p" path="res://scripts/menu_button.gd" id="9_jk1qb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
+atlas = ExtResource("8_tbmy8")
+region = Rect2(2, 1, 94, 20)
 
 [node name="MainMenu" type="Control" unique_id=1986941817]
 layout_mode = 3
@@ -15,76 +22,146 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5dd4i")
+
+[node name="TitleImage" type="TextureRect" parent="." unique_id=1963359781]
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 0
+offset_left = 216.0
+offset_top = -141.0
+offset_right = 1016.0
+offset_bottom = 659.0
+texture = ExtResource("7_oa1go")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1572347441]
 script = ExtResource("1_rtw2f")
 
 [node name="layer5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1200204020]
-motion_mirroring = Vector2(1280, 0)
+position = Vector2(640, 360)
+motion_mirroring = Vector2(2560, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/layer5" unique_id=1112543157]
 scale = Vector2(1.25, 2.08)
 texture = ExtResource("1_8ln24")
 
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/layer5" unique_id=1541522119]
+position = Vector2(1280, -0.16000366)
+scale = Vector2(1.25, 2.08)
+texture = ExtResource("1_8ln24")
+
 [node name="layer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=513263223]
+position = Vector2(640, 360)
 motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(1280, 0)
+motion_mirroring = Vector2(2560, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/layer4" unique_id=1977480323]
 scale = Vector2(1.25, 2.08)
 texture = ExtResource("2_rtw2f")
 
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/layer4" unique_id=1257502868]
+position = Vector2(1280, -0.16000366)
+scale = Vector2(1.25, 2.08)
+texture = ExtResource("2_rtw2f")
+
 [node name="layer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1200448534]
+position = Vector2(640, 360)
 motion_scale = Vector2(0.6, 1)
-motion_mirroring = Vector2(1280, 0)
+motion_mirroring = Vector2(2560, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/layer3" unique_id=427859674]
 scale = Vector2(1.25, 2.08)
 texture = ExtResource("3_oa1go")
 
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/layer3" unique_id=1029461067]
+position = Vector2(1280, -0.16000366)
+scale = Vector2(1.25, 2.08)
+texture = ExtResource("3_oa1go")
+
 [node name="layer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1289607034]
+position = Vector2(640, 360)
 motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(1280, 0)
+motion_mirroring = Vector2(2560, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/layer2" unique_id=1715555684]
 scale = Vector2(1.25, 2.08)
 texture = ExtResource("4_tbmy8")
 
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/layer2" unique_id=356671373]
+position = Vector2(1280, -0.16000366)
+scale = Vector2(1.25, 2.08)
+texture = ExtResource("4_tbmy8")
+
 [node name="layer1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1336376489]
+position = Vector2(640, 360)
 motion_scale = Vector2(0.9, 1)
-motion_mirroring = Vector2(1280, 0)
+motion_mirroring = Vector2(2560, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/layer1" unique_id=1617606198]
 scale = Vector2(1.25, 2.08)
 texture = ExtResource("5_jk1qb")
 
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/layer1" unique_id=1600588865]
+position = Vector2(1280, -0.16000366)
+scale = Vector2(1.25, 2.08)
+texture = ExtResource("5_jk1qb")
+
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1986604448]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 456.0
+offset_top = 304.00006
+offset_right = 570.0
+offset_bottom = 403.00006
+scale = Vector2(2.7373164, 3.1966345)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1670000286]
 layout_mode = 2
 alignment = 1
-
-[node name="TitleImage" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=1963359781]
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-texture = ExtResource("7_oa1go")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1814760440]
 layout_mode = 2
 
 [node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=267796493]
 layout_mode = 2
+alignment = 1
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer" unique_id=305779357]
+unique_name_in_owner = true
 layout_mode = 2
+icon = SubResource("AtlasTexture_tbmy8")
+flat = true
+script = ExtResource("9_jk1qb")
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer" unique_id=232837764]
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer" unique_id=397078387]
+unique_name_in_owner = true
 layout_mode = 2
+icon = SubResource("AtlasTexture_tbmy8")
+flat = true
+script = ExtResource("9_jk1qb")
 
-[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer" unique_id=1956813408]
-layout_mode = 2
+[node name="Play" type="Label" parent="." unique_id=890453343]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 388.99994
+offset_right = 648.0
+offset_bottom = 433.99994
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Label" parent="." unique_id=198077220]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 490.99994
+offset_right = 646.0
+offset_bottom = 535.99994
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1

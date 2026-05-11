@@ -1,6 +1,5 @@
 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
-
 @onready var left_portrait: TextureRect = %LeftPortrait
 @onready var right_portrait: TextureRect = %RightPortrait
 @onready var left_character_panel: PanelContainer = %LeftCharacterPanel
@@ -75,7 +74,8 @@ var mutation_cooldown: Timer = Timer.new()
 
 const PORTRAIT_PATHS = {
 	"Knight": "res://assets/HUD/Knight Portrait.png",
-	"Batu Khan": "res://assets/HUD/Portraits/Batu Kham.png"
+	"Batu Khan": "res://assets/HUD/Portraits/Batu Kham.png",
+	"Minotaur": "res://assets/HUD/Portraits/NobgMino.png"
 }
 
 func _ready() -> void:
